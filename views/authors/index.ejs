@@ -1,15 +1,21 @@
-<h1>Authors</h1>
+<div class=" heading">
+  <h1>Authors</h1>
+  <p id="about">Learn a little more about our great authors. Check out their bios below.</p>
+</div>
 
-<% authors.forEach(function(author) { %>
-  <div class="well">
-    <h2>
-      <a href="/authors/<%= author.id %>">
-        <%= author.getFullName() %>
-      </a>
-    </h2>
-  </div>
-<% }) %>
-
+<div class="row posts">
+  <% authors.forEach(function(author, i) { %>
+    <div class="blog-post">
+      <img class="image" src="<%= images[i] %>">
+      <h2>
+        <a style="font-family: 'Raleway', sans-serif; font-weight: 900;" href="/authors/<%= author.id %>">
+          <%= author.getFullName() %>
+        </a>
+      </h2>
+      <p id="about" style="width: 70%; margin: auto"><%= author.bio %> </p>
+    </div>
+  <% }) %>
+</div>
 <hr />
 
 <a href="/">&larr; Back Home</a>

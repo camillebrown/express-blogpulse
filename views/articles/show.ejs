@@ -1,11 +1,50 @@
-<h1><%= article.title %> <small>by <%= article.author.getFullName() %></small></h1>
+<div class="article-heading">
+  <h1 class="article-title"><%= article.title %></h1>
+  <p class="art-data"><small>by <%= article.author.getFullName() %></small></p>
+  <p class="art-data"><small>
+    <%= moment(article.createdAt).calendar() %>
+  </small></p>
+  <a href="https://www.facebook.com" class="fa fa-facebook"></a>
+  <a href="https://www.twitter.com" class="fa fa-twitter"></a>
+  <a href="https://www.pinterest.com" class="fa fa-pinterest"></a>
 
-<p>
-  <strong><%= moment(article.createdAt).calendar() %></strong>
-</p>
 
-<p><%= article.content %></p>
+</div>
 
+
+<div class="row posts">
+  <p class="article-content"><%= article.content %></p>
+</div>
 <hr />
 
+<div class="comments">
+<h3 style="font-family: 'Raleway', sans-serif; font-weight: 900;"> Add a New Comment: </h3>
+
+<form action="/articles/:id/comments" method="POST">
+  <div class="form-group">
+    <input type="text" class="form-control" id="name" name="name" placeholder="Your Name" required>
+  </div>
+  
+  <div class="form-group">
+    <input type="text" class="form-control" id="content" name="content" placeholder="Write a Comment" required>
+  </div>
+  
+  <div class="form-group">
+    <input hidden type="number" name="articleId" value="<%=articleId%>">
+  </div>
+  
+  <input type="submit" id="submit" class="btn btn-primary">
+</form>
+
+
+    <% article.comments.forEach((comment, i)=> { %>
+      <div class="comment-content">
+        <img src="<%= images[i] %>">
+        <h4 style="font-size: 15px; padding-top: 4px"><%= comment.content %> </h3>
+        <p style="font-size: 12px"><%= comment.name %></p>
+      </div>  
+    <% }); %>
+  
+</div>
+  
 <a href="/">&larr; Back Home</a>

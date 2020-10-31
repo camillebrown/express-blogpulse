@@ -1,28 +1,18 @@
-<div class="row">
-  <div class="col-sm-8">
-    <div class="row">
-      <div class="col-xs-12">
-        <img class="hero" src="https://upload.wikimedia.org/wikipedia/commons/e/e3/Seattle_Kerry_Park_Skyline.jpg">
-      </div>
-    </div>
+<div class="row heading">
     <h1>Latest Posts from BlogPulse</h1>
-
-    <% articles.forEach(function(a) { %>
-      <div class="well">
-        <h2>
-          <a href="/articles/<%= a.id %>"><%= a.title %></a>
-          <small>by <%= a.author.getFullName() %></small>
-        </h2>
-        <p>
-          <strong><%= moment(a.createdAt).calendar() %></strong>
-        </p>
-      </div>
+    <p id="about">BlogPulse is an up-and-coming player in the global media market,
+      providing user-generated content across all topics.</p>
+</div>
+<div class="row posts">
+    <% articles.forEach(function(a, i) { %>
+        <div class="blog-post">
+          <img class="image" src="<%= images[i] %>">
+          <h2>
+            <a class="blog-title" href="/articles/<%= a.id %>"><%= a.title %></a>
+            <p class="title-content"><%= a.author.getFullName() %><br>
+              <small><%= moment(a.createdAt).calendar() %></small>
+            </p>
+          </h2>
+        </div>
     <% }) %>
-
-  </div>
-  <div class="col-sm-4">
-    <h2>About</h2>
-    <p>BlogPulse is an up-and-coming player in the global media market,
-    providing user-generated content across all topics.</p>
-  </div>
 </div>

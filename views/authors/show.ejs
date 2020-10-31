@@ -1,16 +1,16 @@
-<h1>Author: <%= author.getFullName() %></h1>
-
-<p><%= author.bio %></p>
-<a href="/articles/new" class="btn btn-primary">Create a new Post</a>
-
+<div class="heading">
+  <h1>Author: <%= author.getFullName() %></h1>
+  <p id="about"><%= author.bio %></p>
+  <a href="/articles/new" id="create" class="btn btn-primary">Create a new Post</a>
+</div>  
 <hr />
 
-<h2>Articles</h2>
+<h2 class= "blog-title" style="margin-bottom: 20px">Articles</h2>
 
 <% if(author && author.articles) { %>
   <% author.articles.forEach(function(a) { %>
     <div class="well">
-      <h3>
+      <h3 class="title-content">
         <a href="/articles/<%= a.id %>"><%= a.title %></a>
       </h3>
     </div>
